@@ -13,7 +13,7 @@ module.exports = merge(common, {
   mode: 'production',
   output: {
     path: resolveApp('build'),
-    filename: 'static/js/[id].bundle.js',
+    filename: 'static/js/[id].[contenthash:8].bundle.js',
     clean: true
   },
   //remove comments from JS files
@@ -35,7 +35,8 @@ module.exports = merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css"
+      filename: 'static/css/[name].[contenthash:8].css',
+      chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
     }),
   ]
 });
